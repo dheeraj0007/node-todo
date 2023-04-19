@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title%></title>
+  </head>
+  <body>
+    <h1>Your todo's</h1>
+
+    <form action="/newTodo" method="POST">
+      <input
+        type="text"
+        name="heading"
+        required
+        placeholder="Enter the heading "
+      />
+      <input
+        type="text"
+        name="content"
+        required
+        placeholder="Enter the content"
+      />
+      <input type="submit" value="New Todo" />
+    </form>
+
+    <ul>
+      <% for(todo of tasks){%>
+      <li>
+        <a href="/delete/<%= todo.id %>">Delete todo</a>
+        <h2><%= todo.heading%></h2>
+        <p><%= todo.content%></p>
+      </li>
+      <% }%>
+    </ul>
+  </body>
+</html>
